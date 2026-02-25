@@ -1,166 +1,252 @@
-<div align="center"><img src="https://i.imgur.com/gYf4WfG.png" alt="Logo do Projeto" width="150" /><h1>🚀 Workshop Spring Boot 3 & JPA </h1><p><strong>Um projeto de workshop que constrói uma API RESTful com Spring Boot 3, Spring Data JPA e um banco de dados H2 in-memory.</strong></p><p><img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot"><img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"><img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle"><img src="https://img.shields.io/badge/H2%20Database-FF0000?style=for-the-badge&logo=h2&logoColor=white" alt="H2 Database"><details><summary><strong>📚 Tabela de Conteúdos</strong></summary><ol><li><a href="#-sobre-o-projeto">📖 Sobre o Projeto</a></li><li><a href="#-funcionalidades-principais">✨ Funcionalidades Principais</a></li><li><a href="#-pilha-de-tecnologias-tech-stack">🛠️ Pilha de Tecnologias (Tech Stack)</a></li><li><a href="#-destaques-da-arquitetura">🔑 Destaques da Arquitetura</a></li><li><a href="#-começando-getting-started">🚀 Começando (Getting Started)</a></li><li><a href="#-endpoints-da-api">🛰️ Endpoints da API</a></li><li><a href="#-estrutura-de-ficheiros">📂 Estrutura de Ficheiros</a></li><li><a href="#-como-contribuir">🤝 Como Contribuir</a></li><li><a href="#-autor">👨‍💻 Autor</a></li><li><a href="#-licença">📄 Licença</a></li></ol></details>
+<div align="center">
 
------------------------------------------------------------------------------------------------------------------------------
-📖 Sobre o Projeto
+<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Logo do Projeto" width="120" />
 
-  Este projeto é um workshop prático focado em construir uma API RESTful moderna usando Spring Boot 3. O objetivo principal é demonstrar a configuração de um projeto Java do zero, cobrindo os conceitos essenciais de Spring Data JPA para mapeamento objeto-relacional (ORM) e Spring Web para a criação de endpoints web.
-  
-  A aplicação expõe uma API simples para gerir "Utilizadores", utilizando um banco de dados H2 in-memory para facilitar os testes e o desenvolvimento sem a necessidade de configuração de um banco de dados externo.
-  
------------------------------------------------------------------------------------------------------------------------------
-✨ Funcionalidades Principais
+# 🚀 Workshop Spring Boot 3 & JPA
 
-  1. 🌐 API RESTful: Expõe endpoints HTTP (como GET /users) para operações de CRUD (neste demo, apenas Read).
-  
-  2. 🗃️ Mapeamento JPA: Utiliza Spring Data JPA para mapear a classe User a uma tabela de banco de dados (tb_user).
-  
-  3. ⚡ Banco de Dados H2: Configurado para rodar em memória, permitindo que a aplicação seja executada instantaneamente.
-  
-  4. 🖥️ Console H2: O console web do H2 é ativado para fácil visualização e depuração do banco de dados em http://localhost:8080/h2-console.
-  
-  5. 🛠️ Build com Gradle: O projeto é gerido e compilado usando o Gradle.
-    
------------------------------------------------------------------------------------------------------------------------------
-🛠️ Pilha de Tecnologias (Tech Stack)
+**Um projeto de workshop prático focado na construção de uma API RESTful utilizando**
+**Spring Boot 3, Spring Data JPA e banco de dados H2 in-memory.**
 
-  As principais tecnologias e dependências usadas neste projeto são:
-  
-  1. Framework (Spring Boot 3): Framework principal da aplicação.
-  
-  2. Linguagem (Java 17+): Linguagem de programação.
-  
-  3. API Web (Spring Web): Criação de controllers e endpoints REST.
-  
-  4. Base de Dados (ORM): Spring Data JPA. Mapeamento Objeto-Relacional.
-  
-  5. Base de Dados (Runtime): H2 Database. Banco de dados leve e em memória.
-  
-  6. Build Tool (Gradle): Gestor de dependências e build.
-  
-  7. Testes (Spring Boot Test): Framework de testes unitários e de integração.
+<br>
 
------------------------------------------------------------------------------------------------------------------------------
-🔑 Destaques da Arquitetura
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white)
+![H2 Database](https://img.shields.io/badge/H2%20Database-FF0000?style=for-the-badge&logo=h2&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-  O projeto é dividido em camadas clássicas do Spring Boot:
-  
-  1. Entidade (User.java)A classe de modelo que representa os dados. É anotada com @Entity para que o JPA saiba como mapeá-la para o banco de dados.
-  
-  2. Resource / Controller (UserResource.java)A classe que expõe a lógica de negócio para o mundo exterior através de endpoints REST.
+</div>
 
-  3. Configuração (application.properties): Onde a aplicação é configurada, incluindo a conexão com o H2 e a ativação do console. (Properties# Em src/main/resources/application.properties)
+---
 
-    # Configuração do H2 Database (em memória)
-    spring.datasource.url=jdbc:h2:mem:testdb
-    spring.datasource.username=sa
-    spring.datasource.password=
+## 📚 Tabela de Conteúdos
 
-    # Ativa o console do H2
-    spring.h2.console.enabled=true
+> Navegue rapidamente pelas seções do projeto.
 
------------------------------------------------------------------------------------------------------------------------------
-🚀 Começando (Getting Started)
+| # | Seção |
+|:-:|:------|
+| 1 | [📖 Sobre o Projeto](#-sobre-o-projeto) |
+| 2 | [✨ Funcionalidades Principais](#-funcionalidades-principais) |
+| 3 | [🛠️ Pilha de Tecnologias](#️-pilha-de-tecnologias-tech-stack) |
+| 4 | [🔑 Destaques da Arquitetura](#-destaques-da-arquitetura) |
+| 5 | [🚀 Começando (Getting Started)](#-começando-getting-started) |
+| 6 | [📂 Estrutura de Arquivos](#-estrutura-de-arquivos) |
+| 7 | [🤝 Como Contribuir](#-como-contribuir) |
+| 8 | [👨‍💻 Autor](#-autor) |
+| 9 | [📄 Licença](#-licença) |
 
-  Para executar este projeto localmente, siga estes passos.
-  
-  1. Pré-requisitosJava (JDK) 17 ou superior.
-  
-  2. Gradle (O gradlew wrapper está incluído no projeto e fará o download automático).
-  
-  3. Uma IDE Java (como IntelliJ IDEA ou VS Code com extensões Java).
-  
-  4. Guia de Instalação
+---
 
-     Clone o repositório:
+## 📖 Sobre o Projeto
 
-         git clone https://github.com/victorhjsantiago/workshop-springboot3-jpa.git
-         cd workshop-springboot3-jpa
+> Este projeto é um **workshop prático** desenvolvido para demonstrar a configuração de uma aplicação Java do zero.
+>
+> O objetivo central é cobrir os conceitos essenciais do **Spring Data JPA** para mapeamento objeto-relacional (ORM) e do **Spring Web** na criação de endpoints RESTful.
+>
+> A aplicação expõe uma API simples para gerenciar **"Usuários"**, rodando sobre um banco **H2 in-memory**, garantindo facilidade nos testes e desenvolvimento contínuo sem a necessidade de configurar bancos externos.
 
-      Execute a Aplicação:Use o wrapper do Gradle para compilar e iniciar o servidor Spring Boot.
+---
 
-       # No Linux / macOS
-      ./gradlew bootRun
+## ✨ Funcionalidades Principais
 
-      # No Windows
-      .\gradlew.bat bootRun
+| Ícone | Recurso | Descrição |
+|:-----:|:--------|:----------|
+| 🌐 | **API RESTful** | Expõe endpoints HTTP (ex: `GET /users`) para operações básicas de consulta. |
+| 🗃️ | **Mapeamento JPA** | Usa Spring Data JPA para mapear a classe `User` diretamente na tabela `tb_user`. |
+| ⚡ | **Banco H2 Integrado** | Banco em memória configurado para execução e testes instantâneos. |
+| 🖥️ | **Console H2 Web** | Interface gráfica ativada para depuração direta em `/h2-console`. |
+| 🛠️ | **Automação Gradle** | Gerenciamento completo de dependências e build via wrappers nativos do Gradle. |
 
-      Aceda aos Endpoints:A aplicação estará a ser executada em http://localhost:8080.
+---
 
-      API de Utilizadores: http://localhost:8080/users
+## 🛠️ Pilha de Tecnologias (Tech Stack)
 
-      Console H2: http://localhost:8080/h2-consoleJDBC
+| Tecnologia | Versão | Função no Projeto |
+|:-----------|:------:|:------------------|
+| **Java** | 17+ | Linguagem de programação base. |
+| **Spring Boot** | 3.x | Framework principal que orquestra a aplicação. |
+| **Spring Web** | — | Responsável pela camada de Controllers e endpoints REST. |
+| **Spring Data JPA** | — | Interface de persistência de dados e ORM. |
+| **H2 Database** | — | Banco de dados relacional leve executado em runtime. |
+| **Gradle** | — | Ferramenta de build e gestão de bibliotecas. |
+| **Spring Boot Test** | — | Ambiente para testes unitários e de integração. |
 
-      URL: jdbc:h2:mem:testdbUsername: saPassword: (deixe em branco)
+---
 
-----------------------------------------------------------------------------------------------------------------------------
-📂 Estrutura de Ficheiros
+## 🔑 Destaques da Arquitetura
 
+> O projeto adota o **padrão de camadas clássico** do Spring Boot, isolando responsabilidades de forma clara e escalável.
+
+| Camada | Arquivo | Responsabilidade |
+|:-------|:--------|:----------------|
+| 🏛️ **Entidade** | `User.java` | Classe de modelo anotada com `@Entity`. Representa os dados persistidos no banco. |
+| 🎛️ **Controller** | `UserResource.java` | Recebe as requisições HTTP e retorna as respostas da API REST. |
+| ⚙️ **Configuração** | `application.properties` | Centraliza os parâmetros de inicialização e credenciais do banco de dados. |
+
+<details>
+<summary><strong>⚙️ Visualizar conteúdo do <code>application.properties</code></strong></summary>
+
+<br>
+
+```properties
+# ──────────────────────────────────────────
+# Configuração do H2 Database (in-memory)
+# ──────────────────────────────────────────
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.username=sa
+spring.datasource.password=
+
+# ──────────────────────────────────────────
+# Configurações do Console Web H2
+# ──────────────────────────────────────────
+spring.h2.console.enabled=true
+
+# ──────────────────────────────────────────
+# Configurações Gerais da Aplicação
+# ──────────────────────────────────────────
+spring.application.name=course
+```
+
+</details>
+
+---
+
+## 🚀 Começando (Getting Started)
+
+### 📋 Pré-requisitos
+
+| Requisito | Detalhe |
+|:----------|:--------|
+| **Java (JDK)** | Versão **17 ou superior** instalada e configurada no `PATH`. |
+| **IDE** | Recomenda-se **IntelliJ IDEA**, Eclipse ou VS Code com extensões Java. |
+| **Gradle** | **Não requer instalação global.** O projeto utiliza o `gradlew` embutido. |
+
+---
+
+### 🔧 Instalação e Execução
+
+**1. Clone o repositório:**
+
+```bash
+git clone https://github.com/victorhjsantiago/workshop-springboot3-jpa.git
+cd workshop-springboot3-jpa
+```
+
+**2. Inicie o servidor Spring Boot:**
+
+```bash
+# Linux / macOS
+./gradlew bootRun
+
+# Windows
+.\gradlew.bat bootRun
+```
+
+---
+
+### 🛰️ Acesso aos Endpoints
+
+> Com a aplicação em execução, os seguintes endereços estarão disponíveis:
+
+| Serviço | URL |
+|:--------|:----|
+| 👤 **Consulta de Usuários** | `http://localhost:8080/users` |
+| 🖥️ **Interface do Console H2** | `http://localhost:8080/h2-console` |
+
+**Credenciais de acesso ao Console H2:**
+
+| Campo | Valor |
+|:------|:------|
+| **JDBC URL** | `jdbc:h2:mem:testdb` |
+| **Username** | `sa` |
+| **Password** | *(deixe em branco)* |
+
+---
+
+## 📂 Estrutura de Arquivos
+
+```plaintext
 workshop-springboot3-jpa/
+│
+├── 📄 build.gradle                        # Dependências e configuração do Gradle
+├── 📄 gradlew                             # Script de inicialização (Linux/macOS)
+├── 📄 gradlew.bat                         # Script de inicialização (Windows)
+│
+├── 📁 gradle/
+│   └── 📁 wrapper/                        # Arquivos base do Gradle Wrapper
+│
+└── 📁 src/
+    ├── 📁 main/
+    │   ├── 📁 java/com/course/course/
+    │   │   ├── 📄 CourseApplication.java        # ▶ Ponto de entrada (main)
+    │   │   ├── 📁 entities/
+    │   │   │   └── 📄 User.java                 # 🏛 Entidade JPA
+    │   │   └── 📁 resources/
+    │   │       └── 📄 UserResource.java          # 🎛 Controller REST
+    │   └── 📁 resources/
+    │       └── 📄 application.properties         # ⚙ Configurações da aplicação
+    │
+    └── 📁 test/
+        └── 📁 java/com/course/course/
+            └── 📄 CourseApplicationTests.java    # 🧪 Testes de integração
+```
 
-├── build.gradle                # <--- Dependências e build do Gradle
+---
 
-├── gradle/
+## 🤝 Como Contribuir
 
-│   └── wrapper/                # Wrapper do Gradle
+> Contribuições tornam a comunidade open-source um lugar incrível para aprender e crescer. Qualquer melhoria será muito apreciada!
 
-├── gradlew
+| Passo | Ação | Comando |
+|:-----:|:-----|:--------|
+| 1️⃣ | **Fork** | Crie um fork do repositório para a sua conta. |
+| 2️⃣ | **Branch** | Crie sua feature branch. | `git checkout -b feature/NovaFeature` |
+| 3️⃣ | **Commit** | Salve suas alterações com uma mensagem clara. | `git commit -m 'feat: Adiciona NovaFeature'` |
+| 4️⃣ | **Push** | Envie sua branch para o repositório remoto. | `git push origin feature/NovaFeature` |
+| 5️⃣ | **Pull Request** | Abra um PR detalhando as mudanças realizadas. | — |
 
-├── gradlew.bat
+<div align="center">
 
-├── src/
+<br>
 
-│   ├── main/
+**Se este projeto foi útil para os seus estudos, deixe uma estrela ⭐️ no repositório!**
 
-│   │   ├── java/com/course/course/
+</div>
 
-│   │   │   ├── CourseApplication.java  # <--- Ponto de entrada (main)
+---
 
-│   │   │   ├── entities/
+## 👨‍💻 Autor
 
-│   │   │   │   └── User.java       # <--- Entidade JPA
+<div align="center">
 
-│   │   │   └── resources/
+<br>
 
-│   │   │       └── UserResource.java # <--- Controller REST
+**Victor H. J. Santiago**
 
-│   │   └── resources/
+<br>
 
-│   │       └── application.properties # <--- Configuração da BD H2
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VictorHJesusSantiago)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-henrique-de-jesus-santiago/)
 
-│   └── test/
+</div>
 
-│       └── java/com/course/course/
+---
 
-│           └── CourseApplicationTests.java # Testes de integração
+## 📄 Licença
 
-└── README.md
+<div align="center">
 
-----------------------------------------------------------------------------------------------------------------------------
-🤝 Como Contribuir
+Este projeto está distribuído sob a **Licença MIT**.
+Consulte o arquivo [`LICENSE`](./LICENSE) no repositório para mais informações.
 
-  Contribuições são o que tornam a comunidade open-source um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que fizer será imensamente apreciada. 
-  
-  Se tiver uma sugestão para melhorar este projeto (mesmo sendo um demo!), por favor, faça um fork do repositório e crie um pull request.
-  
-  1. Faça um Fork do Projeto
-  
-  2. Crie a sua Feature Branch (git checkout -b feature/NovaFeatureIncrivel)
-  
-  3. Faça Commit das suas mudanças (git commit -m 'Adiciona NovaFeatureIncrivel')
-  
-  4. Faça Push para a Branch (git push origin feature/NovaFeatureIncrivel)
-  
-  5. Abra um Pull Request
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-  Não se esqueça de dar uma estrela ⭐️ ao projeto!
-  
------------------------------------------------------------------------------------------------------------------------------  
-  👨‍💻 Autor
-  <div align="center"><strong>Victor H. J. Santiago</strong>
-    
-  <a href="https://github.com/victorhjsantiago"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a><a href="URL_DO_SEU_LINKEDIN_AQUI"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+</div>
 
------------------------------------------------------------------------------------------------------------------------------
-📄 Licença
+---
 
-Distribuído sob a Licença MIT. Veja LICENSE para mais informações.
+<div align="center">
+
+*Feito com ☕ e Spring Boot por **Victor H. J. Santiago***
+
+</div>
