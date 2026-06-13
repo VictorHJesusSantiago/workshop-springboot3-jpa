@@ -1,140 +1,796 @@
 <div align="center">
 
-<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Logo do Projeto" width="120" />
+<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Project Logo" width="110" />
 
 # 🚀 Workshop Spring Boot 3 & JPA
 
-**Um projeto de workshop prático focado na construção de uma API RESTful utilizando**
-**Spring Boot 3, Spring Data JPA e banco de dados H2 in-memory.**
+### User Management REST API — Full Engineering Documentation
 
-<br>
+A Spring Boot 3 + Spring Data JPA + H2 educational project, documented end-to-end with
+requirements, UML diagrams, data modeling, DFD, architecture, personas and wireframes.
 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white)
-![H2 Database](https://img.shields.io/badge/H2%20Database-FF0000?style=for-the-badge&logo=h2&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-yellow?style=for-the-badge)
+![Java](https://img.shields.io/badge/JAVA-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/SPRING%20BOOT-3.x-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![H2](https://img.shields.io/badge/H2%20DATABASE-IN%20MEMORY-FF0000?style=for-the-badge&logo=h2&logoColor=white)
+![License](https://img.shields.io/badge/LICENSE-MIT-blue?style=for-the-badge)
+
+### 🌐 Choose Language / Selecione o idioma / Elija el idioma
+
+[![English](https://img.shields.io/badge/ENGLISH-CURRENT-success?style=for-the-badge)](./README.md)
+[![Português](https://img.shields.io/badge/PORTUGU%C3%8AS-README__PT.md-yellow?style=for-the-badge)](./README_PT.md)
+[![Español](https://img.shields.io/badge/ESPAÑOL-README__ES.md-red?style=for-the-badge)](./README_ES.md)
 
 </div>
 
 ---
 
-## 📚 Tabela de Conteúdos
+## 📘 About the Project
 
-> Navegue rapidamente pelas seções do projeto.
-
-| # | Seção |
-|:-:|:------|
-| 1 | [📖 Sobre o Projeto](#-sobre-o-projeto) |
-| 2 | [✨ Funcionalidades Principais](#-funcionalidades-principais) |
-| 3 | [🛠️ Pilha de Tecnologias](#️-pilha-de-tecnologias-tech-stack) |
-| 4 | [🔑 Destaques da Arquitetura](#-destaques-da-arquitetura) |
-| 5 | [🚀 Começando (Getting Started)](#-começando-getting-started) |
-| 6 | [📂 Estrutura de Arquivos](#-estrutura-de-arquivos) |
-| 7 | [🤝 Como Contribuir](#-como-contribuir) |
-| 8 | [👨‍💻 Autor](#-autor) |
-| 9 | [📄 Licença](#-licença) |
-
----
-
-## 📖 Sobre o Projeto
-
-> Este projeto é um **workshop prático** desenvolvido para demonstrar a configuração de uma aplicação Java do zero.
+> This project is a **hands-on workshop** for building a RESTful API with **Spring Boot 3** and
+> **Spring Data JPA**, backed by an **in-memory H2 database**. Its current core feature is a
+> **User resource** exposed over HTTP/JSON, designed as the foundation for a full CRUD module.
 >
-> O objetivo central é cobrir os conceitos essenciais do **Spring Data JPA** para mapeamento objeto-relacional (ORM) e do **Spring Web** na criação de endpoints RESTful.
->
-> A aplicação expõe uma API simples para gerenciar **"Usuários"**, rodando sobre um banco **H2 in-memory**, garantindo facilidade nos testes e desenvolvimento contínuo sem a necessidade de configurar bancos externos.
+> This README documents the project the way a real software product would be specified:
+> requirements, use cases, traceability, SRS, UML diagrams, data dictionary, data flow,
+> architecture, personas, journeys and UI wireframes.
 
 ---
 
-## ✨ Funcionalidades Principais
+## 📑 Table of Contents
 
-| Ícone | Recurso | Descrição |
-|:-----:|:--------|:----------|
-| 🌐 | **API RESTful** | Expõe endpoints HTTP (ex: `GET /users`) para operações básicas de consulta. |
-| 🗃️ | **Mapeamento JPA** | Usa Spring Data JPA para mapear a classe `User` diretamente na tabela `tb_user`. |
-| ⚡ | **Banco H2 Integrado** | Banco em memória configurado para execução e testes instantâneos. |
-| 🖥️ | **Console H2 Web** | Interface gráfica ativada para depuração direta em `/h2-console`. |
-| 🛠️ | **Automação Gradle** | Gerenciamento completo de dependências e build via wrappers nativos do Gradle. |
-
----
-
-## 🛠️ Pilha de Tecnologias (Tech Stack)
-
-| Tecnologia | Versão | Função no Projeto |
-|:-----------|:------:|:------------------|
-| **Java** | 17+ | Linguagem de programação base. |
-| **Spring Boot** | 3.x | Framework principal que orquestra a aplicação. |
-| **Spring Web** | — | Responsável pela camada de Controllers e endpoints REST. |
-| **Spring Data JPA** | — | Interface de persistência de dados e ORM. |
-| **H2 Database** | — | Banco de dados relacional leve executado em runtime. |
-| **Gradle** | — | Ferramenta de build e gestão de bibliotecas. |
-| **Spring Boot Test** | — | Ambiente para testes unitários e de integração. |
+- [1. Requirements](#1-requirements)
+- [2. Use Cases](#2-use-cases)
+- [3. Requirements Traceability Matrix](#3-requirements-traceability-matrix)
+- [4. Software Requirements Specification (SRS)](#4-software-requirements-specification-srs)
+- [5. UML & Structural Diagrams](#5-uml--structural-diagrams)
+- [6. Data Model & Data Dictionary](#6-data-model--data-dictionary)
+- [7. Data Flow Diagram (DFD)](#7-data-flow-diagram-dfd)
+- [8. Architecture Diagram & Flowchart](#8-architecture-diagram--flowchart)
+- [9. Persona & User Journey Map](#9-persona--user-journey-map)
+- [10. Wireframes & Mockups](#10-wireframes--mockups)
+- [🚀 Installation & Execution](#-installation--execution)
+- [👨‍💻 Author](#-author)
 
 ---
 
-## 🔑 Destaques da Arquitetura
-
-> O projeto adota o **padrão de camadas clássico** do Spring Boot, isolando responsabilidades de forma clara e escalável.
-
-| Camada | Arquivo | Responsabilidade |
-|:-------|:--------|:----------------|
-| 🏛️ **Entidade** | `User.java` | Classe de modelo anotada com `@Entity`. Representa os dados persistidos no banco. |
-| 🎛️ **Controller** | `UserResource.java` | Recebe as requisições HTTP e retorna as respostas da API REST. |
-| ⚙️ **Configuração** | `application.properties` | Centraliza os parâmetros de inicialização e credenciais do banco de dados. |
+## 1. Requirements
 
 <details>
-<summary><strong>⚙️ Visualizar conteúdo do <code>application.properties</code></strong></summary>
+<summary><strong>📕 1.1 Functional Requirements (RF)</strong></summary>
 
-<br>
+| ID | Requirement | Priority |
+|:---|:------------|:--------:|
+| **RF01** | The system must list all registered users (`GET /users`). | High |
+| **RF02** | The system must retrieve a single user by ID (`GET /users/{id}`). | High |
+| **RF03** | The system must allow creating a new user (`POST /users`). | High |
+| **RF04** | The system must allow updating an existing user's data (`PUT /users/{id}`). | Medium |
+| **RF05** | The system must allow deleting a user by ID (`DELETE /users/{id}`). | Medium |
+| **RF06** | The system must provide a web console to inspect the H2 database (`/h2-console`). | Low |
+| **RF07** | The system must persist `User` entities in the `tb_user` table via JPA. | High |
 
-```properties
-# ──────────────────────────────────────────
-# Configuração do H2 Database (in-memory)
-# ──────────────────────────────────────────
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.username=sa
-spring.datasource.password=
+</details>
 
-# ──────────────────────────────────────────
-# Configurações do Console Web H2
-# ──────────────────────────────────────────
-spring.h2.console.enabled=true
+<details>
+<summary><strong>📗 1.2 Non-Functional Requirements (RNF)</strong></summary>
 
-# ──────────────────────────────────────────
-# Configurações Gerais da Aplicação
-# ──────────────────────────────────────────
-spring.application.name=course
+| ID | Requirement | Category |
+|:---|:------------|:---------|
+| **RNF01** | API responses must be returned in JSON format. | Usability |
+| **RNF02** | The application must start with an embedded Tomcat server on port `8080`. | Portability |
+| **RNF03** | The database must run in-memory (H2), requiring no external setup. | Deployability |
+| **RNF04** | Code must follow a layered architecture (Entity / Repository / Resource). | Maintainability |
+| **RNF05** | The system must run on Java 17+ and Spring Boot 3.x. | Compatibility |
+| **RNF06** | Average response time for simple queries must be under 200ms in dev environment. | Performance |
+| **RNF07** | Passwords must not be exposed in logs (future: hashing with BCrypt). | Security |
+
+</details>
+
+<details>
+<summary><strong>📙 1.3 Business Rules (RN)</strong></summary>
+
+| ID | Rule |
+|:---|:-----|
+| **RN01** | Each user must have a unique `email` address. |
+| **RN02** | The `id` field is auto-generated by the database and is immutable. |
+| **RN03** | `name` and `email` fields are mandatory and cannot be empty. |
+| **RN04** | A user cannot be deleted if it is referenced by other entities (future: Orders). |
+| **RN05** | Updating a user must not change its `id`. |
+
+</details>
+
+<details>
+<summary><strong>📒 1.4 Domain Requirements</strong></summary>
+
+| Term | Definition |
+|:-----|:-----------|
+| **User** | A person registered in the system, identified by id, name, email, phone and password. |
+| **Resource (Controller)** | Spring component responsible for exposing REST endpoints (`UserResource`). |
+| **Repository** | Spring Data JPA interface responsible for persistence operations on `User`. |
+| **Entity** | A Java class mapped to a relational table via JPA annotations. |
+| **DTO** | Data Transfer Object — future layer to decouple entities from API payloads. |
+
+</details>
+
+<details>
+<summary><strong>📓 1.5 Data Requirements</strong></summary>
+
+| Field | Type | Constraint |
+|:------|:-----|:-----------|
+| `id` | `Long` | Primary key, auto-increment |
+| `name` | `String` | Required, max 100 chars |
+| `email` | `String` | Required, unique, valid e-mail format |
+| `phone` | `String` | Optional, numeric format |
+| `password` | `String` | Required, stored securely (future: hashed) |
+
+</details>
+
+<details>
+<summary><strong>📔 1.6 Interface Requirements</strong></summary>
+
+| Interface | Description |
+|:----------|:-------------|
+| **REST API (JSON over HTTP)** | Primary interface consumed by clients (Postman, frontend apps). |
+| **H2 Web Console** | Browser-based UI at `/h2-console` for database inspection. |
+| **Swagger / OpenAPI (planned)** | Future interactive API documentation. |
+
+</details>
+
+---
+
+## 2. Use Cases
+
+<details>
+<summary><strong>🧩 Use Case Diagram & Specifications</strong></summary>
+
+```mermaid
+graph LR
+    Admin((👤 Administrator))
+    Client((👤 API Client))
+
+    UC1([Register User])
+    UC2([List Users])
+    UC3([View User Details])
+    UC4([Update User])
+    UC5([Delete User])
+    UC6([Access H2 Console])
+
+    Admin --> UC1
+    Admin --> UC4
+    Admin --> UC5
+    Admin --> UC6
+    Client --> UC2
+    Client --> UC3
+```
+
+### UC01 — Register User
+
+| Field | Description |
+|:------|:-------------|
+| **Actor** | Administrator |
+| **Description** | Creates a new user record in the system. |
+| **Preconditions** | None |
+| **Main Flow** | 1. Actor sends `POST /users` with user data.<br>2. System validates required fields.<br>3. System persists the new `User`.<br>4. System returns `201 Created` with the resource. |
+| **Alternative Flow** | If `email` already exists → returns `409 Conflict`. |
+| **Postconditions** | A new row is added to `tb_user`. |
+
+### UC02 — List Users
+
+| Field | Description |
+|:------|:-------------|
+| **Actor** | API Client |
+| **Description** | Retrieves all registered users. |
+| **Preconditions** | None |
+| **Main Flow** | 1. Actor sends `GET /users`.<br>2. System queries `tb_user` via `UserRepository`.<br>3. System returns `200 OK` with a JSON list. |
+| **Alternative Flow** | If no users exist → returns an empty array. |
+| **Postconditions** | None (read-only) |
+
+### UC05 — Delete User
+
+| Field | Description |
+|:------|:-------------|
+| **Actor** | Administrator |
+| **Description** | Removes a user from the system permanently. |
+| **Preconditions** | User with given `id` must exist. |
+| **Main Flow** | 1. Actor sends `DELETE /users/{id}`.<br>2. System checks existence.<br>3. System deletes the record.<br>4. System returns `204 No Content`. |
+| **Alternative Flow** | If `id` not found → returns `404 Not Found`. |
+| **Postconditions** | The row is removed from `tb_user`. |
+
+</details>
+
+---
+
+## 3. Requirements Traceability Matrix
+
+<details>
+<summary><strong>🔗 RF ↔ Use Case ↔ Component ↔ Diagram</strong></summary>
+
+| Requirement | Use Case | Implementing Component | Related Diagram |
+|:------------|:---------|:------------------------|:-----------------|
+| RF01 | UC02 - List Users | `UserResource.findAll()` | Sequence, Class |
+| RF02 | UC03 - View User Details | `UserResource.findById()` | Sequence, Class |
+| RF03 | UC01 - Register User | `UserResource.insert()` | Activity, Sequence |
+| RF04 | UC04 - Update User | `UserResource.update()` | State Machine |
+| RF05 | UC05 - Delete User | `UserResource.delete()` | State Machine |
+| RF06 | UC06 - Access H2 Console | `application.properties` | Deployment |
+| RF07 | All CRUD use cases | `User`, `UserRepository` | ER Diagram, Class |
+
+</details>
+
+---
+
+## 4. Software Requirements Specification (SRS)
+
+<details>
+<summary><strong>📄 Full SRS Document</strong></summary>
+
+### 4.1 Introduction
+This document specifies the requirements for the **User Management module** of the
+Workshop Spring Boot 3 & JPA project. It targets developers, evaluators and students
+studying layered architecture with Spring Boot.
+
+### 4.2 Overall Description
+The system is a single-module REST API exposing CRUD operations over a `User` resource,
+persisted to an H2 in-memory relational database through Spring Data JPA.
+
+### 4.3 System Features
+- **Feature 1 — User Listing** (RF01): returns all users as JSON.
+- **Feature 2 — User Retrieval** (RF02): returns a single user by ID.
+- **Feature 3 — User Creation** (RF03): persists a new user.
+- **Feature 4 — User Update** (RF04): updates an existing user's fields.
+- **Feature 5 — User Deletion** (RF05): removes a user by ID.
+
+### 4.4 External Interface Requirements
+- **User Interfaces**: H2 web console (`/h2-console`).
+- **Software Interfaces**: REST/JSON consumed via HTTP clients.
+- **Communication Interfaces**: HTTP/1.1 over TCP, port 8080.
+
+### 4.5 Non-Functional Requirements
+See [1.2 Non-Functional Requirements](#1-requirements).
+
+### 4.6 Constraints
+- Must run on Java 17+.
+- Must use Spring Boot 3.x and Spring Data JPA.
+- Database must remain H2 (in-memory) for the workshop scope.
+
+</details>
+
+---
+
+## 5. UML & Structural Diagrams
+
+<details>
+<summary><strong>🧱 5.1 Class Diagram</strong></summary>
+
+```mermaid
+classDiagram
+    class User {
+        -Long id
+        -String name
+        -String email
+        -String phone
+        -String password
+        +User()
+        +User(id, name, email, phone, password)
+        +getId() Long
+        +setId(Long)
+        +getName() String
+        +setName(String)
+        +getEmail() String
+        +setEmail(String)
+        +getPhone() String
+        +setPhone(String)
+        +getPassword() String
+        +setPassword(String)
+        +equals(Object) boolean
+        +hashCode() int
+    }
+
+    class UserRepository {
+        <<interface>>
+        +findAll() List~User~
+        +findById(Long) Optional~User~
+        +save(User) User
+        +deleteById(Long) void
+    }
+
+    class UserResource {
+        +findAll() ResponseEntity~List~User~~
+        +findById(Long) ResponseEntity~User~
+        +insert(User) ResponseEntity~User~
+        +update(Long, User) ResponseEntity~User~
+        +delete(Long) ResponseEntity~Void~
+    }
+
+    UserResource ..> UserRepository : uses
+    UserRepository ..> User : persists
+```
+
+</details>
+
+<details>
+<summary><strong>🧩 5.2 Object Diagram</strong></summary>
+
+```mermaid
+classDiagram
+    class user_1 {
+        id = 1
+        name = "Maria Brown"
+        email = "maria@gmail.com"
+        phone = "988888888"
+        password = "123456"
+    }
+    class user_2 {
+        id = 2
+        name = "Alex Green"
+        email = "alex@gmail.com"
+        phone = "977777777"
+        password = "123456"
+    }
+    note for user_1 "Instance of User"
+    note for user_2 "Instance of User"
+```
+
+</details>
+
+<details>
+<summary><strong>🔁 5.3 Sequence Diagram — GET /users</strong></summary>
+
+```mermaid
+sequenceDiagram
+    actor Client
+    participant Resource as UserResource
+    participant Repo as UserRepository
+    participant DB as H2 Database
+
+    Client->>Resource: GET /users
+    Resource->>Repo: findAll()
+    Repo->>DB: SELECT * FROM tb_user
+    DB-->>Repo: result set
+    Repo-->>Resource: List<User>
+    Resource-->>Client: 200 OK (JSON)
+```
+
+</details>
+
+<details>
+<summary><strong>💬 5.4 Communication (Collaboration) Diagram</strong></summary>
+
+```mermaid
+graph TD
+    A[Client] -- "1: GET /users" --> B[UserResource]
+    B -- "2: findAll()" --> C[UserRepository]
+    C -- "3: SELECT query" --> D[(H2 Database)]
+    D -- "4: rows" --> C
+    C -- "5: List User" --> B
+    B -- "6: 200 OK JSON" --> A
+```
+
+</details>
+
+<details>
+<summary><strong>🔄 5.5 Activity Diagram — Create User</strong></summary>
+
+```mermaid
+flowchart TD
+    Start([Start]) --> Input[Receive POST /users payload]
+    Input --> Validate{Required fields valid?}
+    Validate -- No --> Error[Return 400 Bad Request]
+    Error --> End([End])
+    Validate -- Yes --> CheckEmail{Email already exists?}
+    CheckEmail -- Yes --> Conflict[Return 409 Conflict]
+    Conflict --> End
+    CheckEmail -- No --> Save[Persist User via Repository]
+    Save --> Created[Return 201 Created]
+    Created --> End
+```
+
+</details>
+
+<details>
+<summary><strong>🟢 5.6 State Machine Diagram — User Lifecycle</strong></summary>
+
+```mermaid
+stateDiagram-v2
+    [*] --> Created
+    Created --> Active : persisted successfully
+    Active --> Updated : PUT /users/id
+    Updated --> Active
+    Active --> Deleted : DELETE /users/id
+    Deleted --> [*]
+```
+
+</details>
+
+<details>
+<summary><strong>📦 5.7 Component Diagram</strong></summary>
+
+```mermaid
+graph TB
+    subgraph "Web Layer"
+        UR[UserResource\n REST Controller]
+    end
+    subgraph "Persistence Layer"
+        REPO[UserRepository\n Spring Data JPA]
+    end
+    subgraph "Domain Layer"
+        U[User\n Entity]
+    end
+    subgraph "Database"
+        H2[(H2 - tb_user)]
+    end
+
+    UR --> REPO
+    UR --> U
+    REPO --> U
+    REPO --> H2
+```
+
+</details>
+
+<details>
+<summary><strong>🖥️ 5.8 Deployment Diagram</strong></summary>
+
+```mermaid
+graph TB
+    subgraph "Host Machine"
+        subgraph "JVM :: Embedded Tomcat (port 8080)"
+            APP[course.jar\nSpring Boot Application]
+        end
+        subgraph "In-Memory Database"
+            H2DB[(H2 Database\njdbc:h2:mem:testdb)]
+        end
+    end
+    Browser[Browser / Postman / Frontend] -- HTTP/JSON :8080 --> APP
+    APP -- JDBC --> H2DB
+```
+
+</details>
+
+<details>
+<summary><strong>📂 5.9 Package Diagram</strong></summary>
+
+```mermaid
+graph TB
+    subgraph com.course.course
+        Entities[entities]
+        Resources[resources]
+        Repositories[repositories]
+        App[CourseApplication]
+    end
+
+    Resources --> Repositories
+    Resources --> Entities
+    Repositories --> Entities
+    App --> Resources
+```
+
+</details>
+
+<details>
+<summary><strong>🧬 5.10 Composite Structure Diagram — UserResource</strong></summary>
+
+```mermaid
+graph TB
+    subgraph UserResource["UserResource (Internal Structure)"]
+        direction TB
+        P1["/users — GET port"]
+        P2["/users/{id} — GET port"]
+        P3["/users — POST port"]
+        P4["/users/{id} — PUT port"]
+        P5["/users/{id} — DELETE port"]
+    end
+    P1 --> RepoPort[("UserRepository port")]
+    P2 --> RepoPort
+    P3 --> RepoPort
+    P4 --> RepoPort
+    P5 --> RepoPort
+```
+
+</details>
+
+<details>
+<summary><strong>🌀 5.11 Interaction Overview Diagram</strong></summary>
+
+```mermaid
+flowchart TD
+    A[Client Request Received] --> B{HTTP Method + Path}
+    B -- GET /users --> SD1[[Sequence: List Users]]
+    B -- GET /users/{id} --> SD2[[Sequence: Find by Id]]
+    B -- POST /users --> SD3[[Sequence: Create User]]
+    B -- PUT /users/{id} --> SD4[[Sequence: Update User]]
+    B -- DELETE /users/{id} --> SD5[[Sequence: Delete User]]
+    SD1 --> R[Response Sent to Client]
+    SD2 --> R
+    SD3 --> R
+    SD4 --> R
+    SD5 --> R
+```
+
+</details>
+
+<details>
+<summary><strong>⏱️ 5.12 Timing Diagram — Request Lifecycle</strong></summary>
+
+| Time → | t0 | t1 | t2 | t3 | t4 |
+|:-------|:--:|:--:|:--:|:--:|:--:|
+| **Client** | `REQUEST sent` | idle | idle | idle | `RESPONSE received` |
+| **UserResource** | idle | `RECEIVED` | `PROCESSING` | `RETURNING` | idle |
+| **UserRepository** | idle | idle | `QUERY` | `RESULT` | idle |
+| **H2 Database** | idle | idle | `EXECUTE SELECT` | idle | idle |
+
+</details>
+
+---
+
+## 6. Data Model & Data Dictionary
+
+<details>
+<summary><strong>🗄️ 6.1 Entity-Relationship Diagram (ER)</strong></summary>
+
+```mermaid
+erDiagram
+    TB_USER {
+        BIGINT id PK
+        VARCHAR name
+        VARCHAR email
+        VARCHAR phone
+        VARCHAR password
+    }
+```
+
+</details>
+
+<details>
+<summary><strong>🧠 6.2 Conceptual Model</strong></summary>
+
+> At the conceptual level, the domain revolves around a single entity, **User**, representing
+> any person who interacts with the system. Future iterations may relate `User` to `Order`
+> and `Role` entities.
+
+```mermaid
+erDiagram
+    USER ||--o{ ORDER : "places (future)"
+    USER }o--o{ ROLE : "has (future)"
+```
+
+</details>
+
+<details>
+<summary><strong>🔎 6.3 Logical Model</strong></summary>
+
+| Entity | Attribute | Type | Key |
+|:-------|:----------|:-----|:----|
+| User | id | Integer | PK |
+| User | name | Text | — |
+| User | email | Text | Unique |
+| User | phone | Text | — |
+| User | password | Text | — |
+
+</details>
+
+<details>
+<summary><strong>⚙️ 6.4 Physical Model</strong></summary>
+
+```sql
+CREATE TABLE tb_user (
+    id       BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name     VARCHAR(100) NOT NULL,
+    email    VARCHAR(100) NOT NULL UNIQUE,
+    phone    VARCHAR(20),
+    password VARCHAR(100) NOT NULL
+);
+```
+
+</details>
+
+<details>
+<summary><strong>📚 6.5 Data Dictionary</strong></summary>
+
+| Table | Column | Type | Null? | Description |
+|:------|:-------|:-----|:-----:|:------------|
+| `tb_user` | `id` | `BIGINT` | No | Surrogate primary key, auto-increment |
+| `tb_user` | `name` | `VARCHAR(100)` | No | Full name of the user |
+| `tb_user` | `email` | `VARCHAR(100)` | No | Unique e-mail address, used as login candidate |
+| `tb_user` | `phone` | `VARCHAR(20)` | Yes | Contact phone number |
+| `tb_user` | `password` | `VARCHAR(100)` | No | User password (plain text now, hashed in future) |
+
+</details>
+
+---
+
+## 7. Data Flow Diagram (DFD)
+
+<details>
+<summary><strong>🔀 7.1 DFD Level 0 (Context)</strong></summary>
+
+```mermaid
+flowchart LR
+    Client(["External Entity:\nClient"])
+    P1["1.0\nManage Users"]
+    DS1[("D1: tb_user")]
+
+    Client -- "User data / requests" --> P1
+    P1 -- "User data / responses" --> Client
+    P1 <-- "read / write" --> DS1
+```
+
+</details>
+
+<details>
+<summary><strong>🔀 7.2 DFD Level 1 (Detailed)</strong></summary>
+
+```mermaid
+flowchart TD
+    Client(["Client"])
+    P1["1.1 List Users"]
+    P2["1.2 Get User by Id"]
+    P3["1.3 Create User"]
+    P4["1.4 Update User"]
+    P5["1.5 Delete User"]
+    DS1[("D1: tb_user")]
+
+    Client --> P1 --> DS1
+    Client --> P2 --> DS1
+    Client --> P3 --> DS1
+    Client --> P4 --> DS1
+    Client --> P5 --> DS1
+    DS1 --> P1
+    DS1 --> P2
+```
+
+</details>
+
+<details>
+<summary><strong>🧵 7.3 Data Lineage Diagram</strong></summary>
+
+```mermaid
+flowchart LR
+    A["Client Request\n(JSON Payload)"] --> B["UserResource\n(Controller)"]
+    B --> C["UserRepository\n(Spring Data JPA)"]
+    C --> D["User Entity\n(Java Object)"]
+    D --> E[("tb_user\nH2 Table")]
+    E --> D --> C --> B --> F["HTTP Response\n(JSON)"]
 ```
 
 </details>
 
 ---
 
-## 🚀 Começando (Getting Started)
+## 8. Architecture Diagram & Flowchart
 
-### 📋 Pré-requisitos
+<details>
+<summary><strong>🏗️ 8.1 Layered Architecture</strong></summary>
 
-| Requisito | Detalhe |
-|:----------|:--------|
-| **Java (JDK)** | Versão **17 ou superior** instalada e configurada no `PATH`. |
-| **IDE** | Recomenda-se **IntelliJ IDEA**, Eclipse ou VS Code com extensões Java. |
-| **Gradle** | **Não requer instalação global.** O projeto utiliza o `gradlew` embutido. |
+```mermaid
+graph TB
+    Client["Client / Browser / Postman"] -->|"HTTP + JSON"| Controller["Controller Layer\nUserResource"]
+    Controller --> Service["Service Layer\n(planned)"]
+    Service --> Repository["Repository Layer\nUserRepository"]
+    Repository --> DB[("H2 Database\ntb_user")]
+```
+
+</details>
+
+<details>
+<summary><strong>🔁 8.2 Application Flowchart — Request Handling</strong></summary>
+
+```mermaid
+flowchart TD
+    A([Application Starts]) --> B[Embedded Tomcat boots on :8080]
+    B --> C[Spring Context loads beans]
+    C --> D{Incoming HTTP Request}
+    D --> E[UserResource maps route]
+    E --> F[UserRepository executes query]
+    F --> G[(H2 Database)]
+    G --> F
+    F --> E
+    E --> H[Serialize response to JSON]
+    H --> I([Response sent to client])
+```
+
+</details>
 
 ---
 
-### 🔧 Instalação e Execução
+## 9. Persona & User Journey Map
 
-**1. Clone o repositório:**
+<details>
+<summary><strong>🧑‍💼 9.1 Persona</strong></summary>
 
-```bash
-git clone https://github.com/victorhjsantiago/workshop-springboot3-jpa.git
-cd workshop-springboot3-jpa
+| Attribute | Description |
+|:----------|:-------------|
+| **Name** | Maria Brown |
+| **Role** | Backend Developer / API Consumer |
+| **Age** | 29 |
+| **Goals** | Quickly test CRUD operations for the User module via REST client. |
+| **Frustrations** | Lack of API documentation; unclear error messages. |
+| **Tech Proficiency** | High — comfortable with Postman, JSON, HTTP status codes. |
+| **Needs** | Predictable endpoints, consistent JSON structure, clear status codes. |
+
+</details>
+
+<details>
+<summary><strong>🗺️ 9.2 User Journey Map</strong></summary>
+
+```mermaid
+journey
+    title User Registration & Management Journey
+    section Discovery
+      Reads project README: 4: Maria
+      Clones the repository: 5: Maria
+    section Setup
+      Runs the application locally: 4: Maria
+      Opens H2 console to inspect DB: 3: Maria
+    section Usage
+      Sends GET /users: 5: Maria
+      Sends POST /users to create a record: 4: Maria
+      Sends PUT /users/{id} to update: 4: Maria
+      Sends DELETE /users/{id}: 5: Maria
 ```
 
-**2. Inicie o servidor Spring Boot:**
+</details>
+
+---
+
+## 10. Wireframes & Mockups
+
+<details>
+<summary><strong>🎨 10.1 User List Screen (Wireframe)</strong></summary>
+
+```
+┌──────────────────────────────────────────────┐
+│  Users                                  [ + ] │
+├──────────────────────────────────────────────┤
+│  ID │ Name          │ Email          │ Phone  │
+├─────┼───────────────┼────────────────┼────────┤
+│  1  │ Maria Brown   │ maria@mail.com │ 98888  │
+│  2  │ Alex Green    │ alex@mail.com  │ 97777  │
+├──────────────────────────────────────────────┤
+│              [Edit]   [Delete]                │
+└──────────────────────────────────────────────┘
+```
+
+</details>
+
+<details>
+<summary><strong>📝 10.2 User Form (Create / Edit) — Mockup</strong></summary>
+
+```
+┌──────────────────────────────────────────────┐
+│  New User                                     │
+├──────────────────────────────────────────────┤
+│  Name     [____________________________]     │
+│  Email    [____________________________]     │
+│  Phone    [____________________________]     │
+│  Password [____________________________]     │
+│                                                │
+│              [ Cancel ]   [ Save ]            │
+└──────────────────────────────────────────────┘
+```
+
+</details>
+
+---
+
+## 🚀 Installation & Execution
+
+### ✅ Prerequisites
+
+| Requirement | Detail |
+|:------------|:--------|
+| **Java (JDK)** | Version **17 or higher** |
+| **Build Tool** | Gradle Wrapper (`gradlew`) included — no global install needed |
+| **IDE** | IntelliJ IDEA, Eclipse or VS Code (recommended) |
+
+### 🔧 Steps
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/VictorHJesusSantiago/workshop-springboot3-jpa.git
+cd workshop-springboot3-jpa
+
+# 2. Run the application
 # Linux / macOS
 ./gradlew bootRun
 
@@ -142,111 +798,32 @@ cd workshop-springboot3-jpa
 .\gradlew.bat bootRun
 ```
 
----
+### 🛰️ Endpoints
 
-### 🛰️ Acesso aos Endpoints
-
-> Com a aplicação em execução, os seguintes endereços estarão disponíveis:
-
-| Serviço | URL |
+| Service | URL |
 |:--------|:----|
-| 👤 **Consulta de Usuários** | `http://localhost:8080/users` |
-| 🖥️ **Interface do Console H2** | `http://localhost:8080/h2-console` |
+| 👤 Users API | `http://localhost:8080/users` |
+| 🖥️ H2 Console | `http://localhost:8080/h2-console` |
 
-**Credenciais de acesso ao Console H2:**
+**H2 Console credentials:**
 
-| Campo | Valor |
+| Field | Value |
 |:------|:------|
-| **JDBC URL** | `jdbc:h2:mem:testdb` |
-| **Username** | `sa` |
-| **Password** | *(deixe em branco)* |
+| JDBC URL | `jdbc:h2:mem:testdb` |
+| Username | `sa` |
+| Password | *(leave blank)* |
 
 ---
 
-## 📂 Estrutura de Arquivos
-
-```plaintext
-workshop-springboot3-jpa/
-│
-├── 📄 build.gradle                        # Dependências e configuração do Gradle
-├── 📄 gradlew                             # Script de inicialização (Linux/macOS)
-├── 📄 gradlew.bat                         # Script de inicialização (Windows)
-│
-├── 📁 gradle/
-│   └── 📁 wrapper/                        # Arquivos base do Gradle Wrapper
-│
-└── 📁 src/
-    ├── 📁 main/
-    │   ├── 📁 java/com/course/course/
-    │   │   ├── 📄 CourseApplication.java        # ▶ Ponto de entrada (main)
-    │   │   ├── 📁 entities/
-    │   │   │   └── 📄 User.java                 # 🏛 Entidade JPA
-    │   │   └── 📁 resources/
-    │   │       └── 📄 UserResource.java          # 🎛 Controller REST
-    │   └── 📁 resources/
-    │       └── 📄 application.properties         # ⚙ Configurações da aplicação
-    │
-    └── 📁 test/
-        └── 📁 java/com/course/course/
-            └── 📄 CourseApplicationTests.java    # 🧪 Testes de integração
-```
-
----
-
-## 🤝 Como Contribuir
-
-> Contribuições tornam a comunidade open-source um lugar incrível para aprender e crescer. Qualquer melhoria será muito apreciada!
-
-| Passo | Ação | Comando |
-|:-----:|:-----|:--------|
-| 1️⃣ | **Fork** | Crie um fork do repositório para a sua conta. |
-| 2️⃣ | **Branch** | Crie sua feature branch. | `git checkout -b feature/NovaFeature` |
-| 3️⃣ | **Commit** | Salve suas alterações com uma mensagem clara. | `git commit -m 'feat: Adiciona NovaFeature'` |
-| 4️⃣ | **Push** | Envie sua branch para o repositório remoto. | `git push origin feature/NovaFeature` |
-| 5️⃣ | **Pull Request** | Abra um PR detalhando as mudanças realizadas. | — |
+## 👨‍💻 Author
 
 <div align="center">
 
-<br>
+**Victor Henrique de Jesus Santiago**
+Full Stack Developer
 
-**Se este projeto foi útil para os seus estudos, deixe uma estrela ⭐️ no repositório!**
-
-</div>
-
----
-
-## 👨‍💻 Autor
-
-<div align="center">
-
-<br>
-
-**Victor H. J. Santiago**
-
-<br>
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VictorHJesusSantiago)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-henrique-de-jesus-santiago/)
-
-</div>
-
----
-
-## 📄 Licença
-
-<div align="center">
-
-Este projeto está distribuído sob a **Licença MIT**.
-Consulte o arquivo [`LICENSE`](./LICENSE) no repositório para mais informações.
-
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-
-</div>
-
----
-
-<div align="center">
-
-*Feito com ☕ e Spring Boot por **Victor H. J. Santiago***
+[![Email](https://img.shields.io/badge/Email-victorhenriquedejesussantiago%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:victorhenriquedejesussantiago@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-henrique-de-jesus-santiago/)
+[![GitHub](https://img.shields.io/badge/GitHub-VictorHJesusSantiago-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VictorHJesusSantiago)
 
 </div>
